@@ -1,0 +1,10 @@
+services:
+  ai-agent:
+    build:
+      context: .
+    ports:
+      - "8001:8001"
+    environment:
+      - BACKEND_BASE_URL=http://host.docker.internal:8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - MODEL_NAME=${MODEL_NAME:-gemini-2.5-flash}
