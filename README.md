@@ -47,6 +47,10 @@ ai-agent/
    - Response node formats final answer
 4. Tools call backend task endpoints via `httpx`
 
+- **Persistence & Memory**: Integrated `MemorySaver` checkpointer to maintain conversation state across multiple turns.
+- **Thread Management**: Supports `thread_id` in the `run_agent` function to isolate and resume unique user sessions.
+- **Stateful Workflows**: Automatic checkpointing of the `AgentState` after every node execution for reliability.
+
 ## Prerequisites
 
 - Python 3.11+
@@ -65,10 +69,8 @@ pip install -r requirements.txt
 Create `.env` in `ai-agent/`:
 
 ```env
-OPENAI_API_KEY=your_api_key
-OPENAI_MODEL=gpt-4o-mini
-# Optional for OpenAI-compatible providers
-# OPENAI_BASE_URL=https://your-openai-compatible-endpoint/v1
+GEMINI_API_KEY=your_api_key
+MODEL_NAME=gemini-2.5-flash
 BACKEND_BASE_URL=http://backend:8000
 ```
 
